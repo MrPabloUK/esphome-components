@@ -1,3 +1,20 @@
+// Updated : 2025.01.25
+// Version : 1.1.1
+// GitHub  : https://github.com/Sleeper85/esphome-components
+
+// This YAML is free software: you can redistribute it and/or
+// modify it under the terms of the GNU General Public License
+// as published by the Free Software Foundation, either version 3
+// of the License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// See the GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program. If not, see <http://www.gnu.org/licenses/gpl.html>.
+
 #pragma once
 
 #include "esphome/core/component.h"
@@ -8,13 +25,11 @@
 #include "talk_pin.h"
 
 
-
 namespace esphome {
-
-
 namespace jk_rs485_sniffer {
 
-enum ProtocolVersion {
+enum ProtocolVersion
+{
   PROTOCOL_VERSION_JK04,
   PROTOCOL_VERSION_JK02_24S,
   PROTOCOL_VERSION_JK02_32S,
@@ -26,7 +41,6 @@ class JkRS485Sniffer : public uart::UARTDevice, public output::TalkPin, public C
  public:
   JkRS485Sniffer() = default;
 
-
   void set_broadcast_changes_to_all_bms(bool state);
   bool get_broadcast_changes_to_all_bms() const;
 
@@ -35,7 +49,8 @@ class JkRS485Sniffer : public uart::UARTDevice, public output::TalkPin, public C
 
   void setup() override {
 
-    if (talk_pin_needed_){
+    if (talk_pin_needed_)
+    {
       this->turn_off();
       //this->talk_pin_->pin_mode(esphome::gpio::FLAG_OUTPUT);
       this->talk_pin_->setup();
@@ -43,8 +58,8 @@ class JkRS485Sniffer : public uart::UARTDevice, public output::TalkPin, public C
       this->talk_pin_->digital_write(0); 
     }
 
-  //
-    for (uint8_t cont=0;cont<16;cont++){
+    for (uint8_t cont=0;cont<16;cont++)
+    {
         rs485_network_node[cont].available=0;
         rs485_network_node[cont].last_message_received=0;
         rs485_network_node[cont].last_request_sent=0;
@@ -54,7 +69,8 @@ class JkRS485Sniffer : public uart::UARTDevice, public output::TalkPin, public C
         rs485_network_node[cont].counter_cell_info_received=0;
         rs485_network_node[cont].counter_device_settings_received=0;
         rs485_network_node[cont].counter_device_info_received=0;  
-    }    
+    }
+
     last_master_activity=0;
     last_message_received_acting_as_master=0;
     last_network_scan=0;
@@ -67,7 +83,8 @@ class JkRS485Sniffer : public uart::UARTDevice, public output::TalkPin, public C
 
     nodes_available_number=0;
     nodes_available.reserve(17); 
-    for (uint8_t cont = 0; cont < 16; cont++) {
+    for (uint8_t cont = 0; cont < 16; cont++)
+    {
         nodes_available.push_back('0');
     }
     nodes_available.push_back('\0');
@@ -120,11 +137,12 @@ class JkRS485Sniffer : public uart::UARTDevice, public output::TalkPin, public C
   std::vector<JkRS485SnifferDevice *> devices_;  
 
   void write_state(bool state) override { this->talk_pin_->digital_write(state); }
-  //void write_state(bool state) override { this->set_state(state); }
+  // void write_state(bool state) override { this->set_state(state); }
   GPIOPin *talk_pin_;
   bool talk_pin_needed_;
 
-  struct struct_rs485_network_node {
+  struct struct_rs485_network_node
+  {
      bool available;
      uint32_t last_message_received;
      uint32_t last_request_sent;
@@ -135,12 +153,14 @@ class JkRS485Sniffer : public uart::UARTDevice, public output::TalkPin, public C
      uint16_t counter_device_settings_received;
      uint16_t counter_device_info_received;      
   };
+
   struct struct_rs485_network_node rs485_network_node[16];
   
   std::string nodes_available;
   uint8_t nodes_available_number;
 
-  struct struct_pooling_index {
+  struct struct_pooling_index
+  {
      uint8_t node_address;
      uint8_t frame_type;
      uint8_t scan_address;
@@ -152,7 +172,7 @@ class JkRS485Sniffer : public uart::UARTDevice, public output::TalkPin, public C
 class JkRS485SnifferDevice {
  public:
   void set_parent(JkRS485Sniffer *parent) { parent_ = parent; }
-//  void set_address(uint8_t address) { address_ = address; }
+  // void set_address(uint8_t address) { address_ = address; }
   virtual void on_jk_rs485_sniffer_data(const uint8_t &origin_address, const uint8_t &frame_type, const std::vector<uint8_t> &data, const std::string &nodes_available) = 0;
 
  protected:
