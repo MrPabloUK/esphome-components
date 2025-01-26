@@ -1,5 +1,5 @@
-// Updated : 2025.01.25
-// Version : 1.1.1
+// Updated : 2025.01.26
+// Version : 1.1.2
 // GitHub  : https://github.com/Sleeper85/esphome-components
 
 // This YAML is free software: you can redistribute it and/or
@@ -754,7 +754,7 @@ void JkRS485Bms::decode_jk02_cell_info_(const std::vector<uint8_t> &data) {
     this->battery_total_alarms_active_ = 0;
 
     // 134-135-136-137   2   0xD2 0x00    32bit errors bitmastk
-    uint32_t raw_errors_bitmask = (uint32_t(data[134 + offset]) << 24) | (uint32_t(data[135 + offset]) << 16) | (uint32_t(data[136 + offset]) << 8) | (uint32_t(data[137 + offset]) << 0);
+    uint32_t raw_errors_bitmask = (uint32_t(data[137 + offset]) << 24) | (uint32_t(data[136 + offset]) << 16) | (uint32_t(data[135 + offset]) << 8) | (uint32_t(data[134 + offset]) << 0);
     this->publish_state_(this->errors_bitmask_sensor_, (float) raw_errors_bitmask);
     this->publish_state_(this->errors_text_sensor_, this->error_bits_to_string_(raw_errors_bitmask));
 
@@ -813,7 +813,7 @@ void JkRS485Bms::decode_jk02_cell_info_(const std::vector<uint8_t> &data) {
     this->publish_alarm_state_(this->alarm_plcmoduleanomaly_binary_sensor_, this->check_bit_of_byte_(data[136], 7));
   }
 
-  if (frame_version != FRAME_VERSION_JK02_32S)
+  if (frame_version != FRAME_VERSION_JK02_32S) // code from JK_BLE component ?
   {
     // 134   2   0xD2 0x00              MOS Temperature       0.1          °C
     this->publish_state_(this->temperature_powertube_sensor_, int16_to_float(&data[134+offset]) * 0.1f);    //  (float) ((int16_t) jk_get_16bit(134 + offset)) * 0.1f);
