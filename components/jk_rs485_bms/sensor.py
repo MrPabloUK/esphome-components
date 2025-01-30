@@ -1,3 +1,7 @@
+# Updated : 2025.01.29
+# Version : 1.1.2
+# GitHub  : GitHub  : https://github.com/Sleeper85/esphome-components
+
 import esphome.codegen as cg
 from esphome.components import sensor
 import esphome.config_validation as cv
@@ -29,10 +33,7 @@ from . import CONF_JK_RS485_BMS_ID, JK_RS485_BMS_COMPONENT_SCHEMA
 
 DEPENDENCIES = ["jk_rs485_bms"]
 
-CODEOWNERS = ["@syssi","txubelaxu"]
-
-
-
+CODEOWNERS = ["@syssi","@txubelaxu","@Sleeper85"]
 
 CONF_CELL_COUNT_REAL = "cell_count_real"
 CONF_CELL_VOLTAGE_MIN = "cell_voltage_min"
@@ -113,7 +114,6 @@ CONF_CELL_RESISTANCE_30 = "cell_resistance_30"
 CONF_CELL_RESISTANCE_31 = "cell_resistance_31"
 CONF_CELL_RESISTANCE_32 = "cell_resistance_32"
 
-
 CONF_TEMPERATURE_SENSOR_1 = "temperature_sensor_1"
 CONF_TEMPERATURE_SENSOR_2 = "temperature_sensor_2"
 CONF_TEMPERATURE_SENSOR_3 = "temperature_sensor_3"
@@ -138,37 +138,21 @@ CONF_BATTERY_SOH_VALUATION= "battery_soh_valuation"
 CONF_ERRORS_BITMASK = "errors_bitmask"
 CONF_OPERATION_MODE_BITMASK = "operation_mode_bitmask"
 
-
-
 CONF_DISCHARGING_OVERCURRENT_PROTECTION_RELEASE_TIME = "discharging_overcurrent_protection_release_time";
 CONF_DISCHARGING_SHORT_CIRCUIT_PROTECTION_RELEASE_TIME = "discharging_short_circuit_protection_release_time";
 CONF_CHARGING_OVERCURRENT_PROTECTION_RELEASE_TIME = "charging_overcurrent_protection_release_time";
 CONF_CHARGING_SHORT_CIRCUIT_PROTECTION_RELEASE_TIME = "charging_short_circuit_protection_release_time";
 CONF_CELL_UNDERVOLTAGE_PROTECTION_RELEASE_TIME = "cell_undervoltage_protection_release_time";
 CONF_CELL_OVERVOLTAGE_PROTECTION_RELEASE_TIME = "cell_overvoltage_protection_release_time";
-
-
-
 CONF_CELL_PRESSURE_DIFFERENCE_PROTECTION = "cell_pressure_difference_protection"
-
-
-
 CONF_BALANCING_OPENING_PRESSURE_DIFFERENCE = "balancing_opening_pressure_difference"
-
 CONF_POWERTUBE_TEMPERATURE_PROTECTION = "powertube_temperature_protection"
 CONF_POWERTUBE_TEMPERATURE_PROTECTION_RECOVERY = "powertube_temperature_protection_recovery"
-
-CONF_TEMPERATURE_SENSOR_TEMPERATURE_PROTECTION = (
-    "temperature_sensor_temperature_protection"
-)
+CONF_TEMPERATURE_SENSOR_TEMPERATURE_PROTECTION = "temperature_sensor_temperature_protection"
 CONF_TEMPERATURE_SENSOR_TEMPERATURE_RECOVERY = "temperature_sensor_temperature_recovery"
-CONF_TEMPERATURE_SENSOR_TEMPERATURE_DIFFERENCE_PROTECTION = (
-    "temperature_sensor_temperature_difference_protection"
-)
-
+CONF_TEMPERATURE_SENSOR_TEMPERATURE_DIFFERENCE_PROTECTION = "temperature_sensor_temperature_difference_protection"
 CONF_CHARGING_HIGH_TEMPERATURE_PROTECTION = "charging_high_temperature_protection"
 CONF_DISCHARGING_HIGH_TEMPERATURE_PROTECTION = "discharging_high_temperature_protection"
-
 CONF_CHARGING_LOW_TEMPERATURE_PROTECTION = "charging_low_temperature_protection"
 CONF_CHARGING_LOW_TEMPERATURE_RECOVERY = "charging_low_temperature_recovery"
 CONF_DISCHARGING_LOW_TEMPERATURE_PROTECTION = "discharging_low_temperature_protection"
@@ -176,7 +160,6 @@ CONF_DISCHARGING_LOW_TEMPERATURE_RECOVERY = "discharging_low_temperature_recover
 
 # r/w
 # CONF_BATTERY_STRINGS = "battery_strings"
-
 
 CONF_BALANCING_DIRECTION = "balancing_direction"
 CONF_CURRENT_CALIBRATION = "current_calibration"
@@ -186,21 +169,15 @@ CONF_ALARM_LOW_VOLUME = "alarm_low_volume"
 CONF_MANUFACTURING_DATE = "manufacturing_date"
 CONF_TOTAL_RUNTIME = "battery_total_runtime"
 CONF_BALANCING_CURRENT = "balancing_current"
-
 CONF_MAX_DISCHARGING_CURRENT ="max_discharging_current"
 CONF_START_CURRENT_CALIBRATION = "start_current_calibration"
 CONF_ACTUAL_BATTERY_CAPACITY = "actual_battery_capacity"
 CONF_PROTOCOL_VERSION = "protocol_version"
-
-
 CONF_DISCHARGING_OVERCURRENT_PROTECTION_DELAY = "discharging_overcurrent_protection_delay"
 CONF_DISCHARGING_OVERCURRENT_PROTECTION_RECOVERY_DELAY = "discharging_overcurrent_protection_recovery_delay"
-
 CONF_BATTERY_TOTAL_ALARMS_COUNT = "battery_total_alarms_count"
 CONF_BATTERY_TOTAL_ALARMS_ACTIVE = "battery_total_alarms_active"
-
 CONF_EMERGENCY_TIME_COUNTDOWN = "emergency_time_countdown"
-
 CONF_UART1_PROTOCOL_NUMBER ="uart1_protocol_number"
 CONF_UART2_PROTOCOL_NUMBER ="uart2_protocol_number"
 
@@ -208,24 +185,20 @@ ICON_BALANCING = "mdi:seesaw"
 ICON_CURRENT_DC = "mdi:current-dc"
 ICON_CELL_VOLTAGE_MIN_CELL_NUMBER = "mdi:battery-minus-outline"
 ICON_CELL_VOLTAGE_MAX_CELL_NUMBER = "mdi:battery-plus-outline"
-
 ICON_BATTERY_STRINGS = "mdi:car-battery"
 ICON_BATTERY_CAPACITY_REMAINING = "mdi:battery-50"
 ICON_BATTERY_CAPACITY_REMAINING_DERIVED = "mdi:battery-50"
 ICON_ACTUAL_BATTERY_CAPACITY = "mdi:battery-50"
 ICON_BATTERY_CAPACITY_TOTAL_SETTING = "mdi:battery-sync"
-
 ICON_DEVICE_ADDRESS = "mdi:identifier"
 ICON_ERRORS_BITMASK = "mdi:alert-circle-outline"
 ICON_OPERATION_MODE_BITMASK = "mdi:heart-pulse"
 ICON_CHARGING_CYCLES = "mdi:battery-sync"
 ICON_ALARM_LOW_VOLUME = "mdi:volume-high"
-
 ICON_CELL_RESISTANCE = "mdi:omega"
 ICON_BALANCING = "mdi:seesaw"
 ICON_DIRECTION = "mdi:swap-horizontal-bold"
 ICON_CLOCK ="mdi:clock-outline"
-
 ICON_HIGH_TEMPERATURE = "mdi:weather-sunny"
 ICON_LOW_TEMPERATURE = "mdi:snowflake"
 
@@ -268,7 +241,6 @@ CELL_VOLTAGES = [
     CONF_CELL_VOLTAGE_30,
     CONF_CELL_VOLTAGE_31,
     CONF_CELL_VOLTAGE_32,
-
 ]
 
 CELL_RESISTANCES = [
@@ -389,7 +361,7 @@ CONFIG_SCHEMA = JK_RS485_BMS_COMPONENT_SCHEMA.extend(
             unit_of_measurement=UNIT_EMPTY,  
             icon=ICON_DIRECTION,
             accuracy_decimals=0,
-            device_class=DEVICE_CLASS_CURRENT,
+            device_class=DEVICE_CLASS_EMPTY,
             state_class=STATE_CLASS_MEASUREMENT,
         ),                
         cv.Optional(CONF_CELL_COUNT_REAL): sensor.sensor_schema(
