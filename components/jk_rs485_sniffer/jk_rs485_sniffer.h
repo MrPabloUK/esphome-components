@@ -47,6 +47,14 @@ class JkRS485Sniffer : public uart::UARTDevice, public output::TalkPin, public C
   void set_talk_pin(GPIOPin *pin) { talk_pin_ = pin; }
   void set_talk_pin_needed(bool talk_pin_needed) { talk_pin_needed_= talk_pin_needed;}
 
+  void set_time_between_cell_info_ms(uint32_t ms) { time_between_cell_info_ms = ms; }
+  void set_time_between_settings_ms(uint32_t ms) { time_between_settings_ms = ms; }
+  void set_time_between_device_info_ms(uint32_t ms) { time_between_device_info_ms = ms; }
+
+  uint32_t time_between_cell_info_ms;
+  uint32_t time_between_settings_ms;
+  uint32_t time_between_device_info_ms;
+
   void setup() override {
 
     if (talk_pin_needed_)
