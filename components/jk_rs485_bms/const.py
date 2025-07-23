@@ -1,21 +1,16 @@
-"""Constants for the jk bms ble component."""
-CONF_STATUS_BALANCING = "status_balancing"
-CONF_STATUS_ONLINE = "status_online"
-CONF_STATUS_PRECHARGING = "status_precharging"
-CONF_STATUS_CHARGING = "status_charging"
-CONF_STATUS_DISCHARGING = "status_discharging"
-CONF_STATUS_HEATING = "status_heating"
+# Updated : 2025.07.23
+# Version : 1.1.1
+# GitHub  : https://github.com/Sleeper85/esphome-components
 
-
-CONF_BALANCING = "balancing"
+# switch
 CONF_PRECHARGING = "precharging"
 CONF_CHARGING = "charging"
 CONF_DISCHARGING = "discharging"
+CONF_BALANCING = "balancing"
 CONF_HEATING = "heating"
 CONF_GPS_HEARTBEAT ="gps_heartbeat"
 CONF_PORT_SELECTION = "port_selection"
 CONF_SPECIAL_CHARGER = "special_charger"
-
 
 CONF_CHARGING_FLOAT_MODE = "charging_float_mode"
 CONF_TIMED_STORE_DATA = "timed_stored_data"
@@ -23,9 +18,16 @@ CONF_EMERGENCY = "emergency"
 CONF_DISABLE_TEMPERATURE_SENSORS = "disable_temperature_sensors"
 CONF_DISPLAY_ALWAYS_ON = "display_always_on"
 CONF_SMART_SLEEP_ON = "smart_sleep_on"
-CONF_SMART_SLEEP_TIME = "smart_sleep_time"
 CONF_TIMED_STORED_DATA = "timed_stored_data"
 CONF_DISABLE_PCL_MODULE = "disable_pcl_module"
+
+# binary_sensor
+CONF_STATUS_BALANCING = "status_balancing"
+CONF_STATUS_ONLINE = "status_online"
+CONF_STATUS_PRECHARGING = "status_precharging"
+CONF_STATUS_CHARGING = "status_charging"
+CONF_STATUS_DISCHARGING = "status_discharging"
+CONF_STATUS_HEATING = "status_heating"
 
 CONF_ALARM_WIRERES = "alarm_wireres"
 CONF_ALARM_MOSOTP = "alarm_mosotp"

@@ -1,6 +1,6 @@
-# Updated : 2025.01.29
-# Version : 1.1.2
-# GitHub  : GitHub  : https://github.com/Sleeper85/esphome-components
+# Updated : 2025.07.23
+# Version : 1.1.3
+# GitHub  : https://github.com/Sleeper85/esphome-components
 
 import esphome.codegen as cg
 from esphome.components import sensor
@@ -25,14 +25,9 @@ from esphome.const import (
     UNIT_WATT,
 )
 
-from .const import (
-    CONF_SMART_SLEEP_TIME
-)
-
 from . import CONF_JK_RS485_BMS_ID, JK_RS485_BMS_COMPONENT_SCHEMA
 
 DEPENDENCIES = ["jk_rs485_bms"]
-
 CODEOWNERS = ["@syssi","@txubelaxu","@Sleeper85"]
 
 CONF_CELL_COUNT_REAL = "cell_count_real"
@@ -158,9 +153,7 @@ CONF_CHARGING_LOW_TEMPERATURE_RECOVERY = "charging_low_temperature_recovery"
 CONF_DISCHARGING_LOW_TEMPERATURE_PROTECTION = "discharging_low_temperature_protection"
 CONF_DISCHARGING_LOW_TEMPERATURE_RECOVERY = "discharging_low_temperature_recovery"
 
-# r/w
-# CONF_BATTERY_STRINGS = "battery_strings"
-
+# R/W
 CONF_BALANCING_DIRECTION = "balancing_direction"
 CONF_CURRENT_CALIBRATION = "current_calibration"
 CONF_DEVICE_ADDRESS = "device_address"
@@ -180,6 +173,7 @@ CONF_BATTERY_TOTAL_ALARMS_ACTIVE = "battery_total_alarms_active"
 CONF_EMERGENCY_TIME_COUNTDOWN = "emergency_time_countdown"
 CONF_UART1_PROTOCOL_NUMBER ="uart1_protocol_number"
 CONF_UART2_PROTOCOL_NUMBER ="uart2_protocol_number"
+CONF_SMART_SLEEP_TIME = "smart_sleep_time"
 
 ICON_BALANCING = "mdi:seesaw"
 ICON_CURRENT_DC = "mdi:current-dc"
@@ -1307,8 +1301,6 @@ CONFIG_SCHEMA = JK_RS485_BMS_COMPONENT_SCHEMA.extend(
         ),        
     }
 )
-
-
 
 async def to_code(config):
     hub = await cg.get_variable(config[CONF_JK_RS485_BMS_ID])
